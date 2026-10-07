@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cinderella Factory</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+
+            /* الخلفية */
+            background:
+                radial-gradient(circle at top, #ffffff 0%, #f4f1eb 45%, #dedbd5 100%);
+
+            color: #111;
+            text-align: center;
+
+            min-height: 100vh;
+            padding: 25px 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* الكارت الرئيسي */
+        .card {
+            position: relative;
+
+            background: rgba(255, 255, 255, 0.97);
+
+            padding: 35px 22px 25px;
+
+            margin: 10px auto;
+
+            width: 92%;
+            max-width: 400px;
+
+            border-radius: 28px;
+
+            border: 1px solid rgba(0, 0, 0, 0.06);
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.12),
+                0 5px 15px rgba(0, 0, 0, 0.05);
+
+            overflow: hidden;
+        }
+
+        /* خط ديكوري فوق الكارت */
+        .card::before {
+            content: "";
+            position: absolute;
+
+            top: 0;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 90px;
+            height: 4px;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #c9a227,
+                #e2c15b,
+                #c9a227,
+                transparent
+            );
+
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* اللوجو */
+        .logo {
+            width: 210px;
+            max-width: 82%;
+            height: auto;
+
+            display: block;
+
+            margin: 5px auto 18px;
+
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
+        }
+
+        /* اسم المصنع */
+        h2 {
+            font-size: 27px;
+
+            letter-spacing: 1px;
+
+            margin: 0;
+
+            font-weight: 700;
+
+            color: #171717;
+        }
+
+        /* الخط الفاصل */
+        .line {
+            width: 65px;
+            height: 3px;
+
+            background: linear-gradient(
+                90deg,
+                #b89018,
+                #e3c45d,
+                #b89018
+            );
+
+            margin: 12px auto 22px;
+
+            border-radius: 10px;
+        }
+
+        /* المعلومات */
+        .info {
+            background: #faf9f6;
+
+            border-radius: 18px;
+
+            padding: 12px 10px;
+
+            margin: 0 auto 22px;
+
+            border: 1px solid #eee9dd;
+        }
+
+        /* العنوان */
+        .address {
+            font-size: 16px;
+
+            color: #222;
+
+            margin: 4px 0 8px;
+
+            font-weight: 600;
+        }
+
+        /* أرقام التليفون */
+        .phone {
+            font-size: 16px;
+
+            color: #222;
+
+            margin: 0;
+
+            font-weight: 600;
+
+            line-height: 1.9;
+        }
+
+        /* مجموعة الأزرار */
+        .buttons {
+            margin-top: 8px;
+        }
+
+        /* شكل الزر */
+        .button {
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 100%;
+
+            max-width: 300px;
+
+            min-height: 52px;
+
+            margin: 13px auto;
+
+            padding: 13px 20px;
+
+            background: #111;
+
+            color: #fff;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            letter-spacing: 0.2px;
+
+            border: 1px solid #222;
+
+            box-shadow:
+                0 6px 15px rgba(0, 0, 0, 0.12);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+        }
+
+        /* تأثير الزر */
+        .button:hover {
+            background: #c9a227;
+
+            color: #111;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 20px rgba(0, 0, 0, 0.18);
+        }
+
+        /* عند الضغط */
+        .button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 25px;
+
+            padding-top: 15px;
+
+            border-top: 1px solid #eeeeee;
+
+            font-size: 12px;
+
+            color: #888;
+
+            letter-spacing: 0.5px;
+        }
+
+        /* الموبايل */
+        @media (max-width: 400px) {
+
+            body {
+                padding: 15px 0;
+            }
+
+            .card {
+                width: 94%;
+
+                padding:
+                    30px 16px 22px;
+
+                border-radius: 24px;
+            }
+
+            .logo {
+                width: 190px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .button {
+                max-width: 100%;
+
+                min-height: 50px;
+
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- الكارت -->
+    <div class="card">
+
+        <!-- اللوجو -->
+        <img
+            src="cind.png"
+            alt="Cinderella Fashion Design Logo"
+            class="logo"
+        >
+
+        <!-- اسم المصنع -->
+        <h2>Cinderella Factory</h2>
+
+        <!-- الخط الذهبي -->
+        <div class="line"></div>
+
+
+        <!-- معلومات المصنع -->
+        <div class="info">
+
+            <!-- العنوان -->
+            <p class="address">
+                📍 Edku-Elbehira
+            </p>
+
+            <!-- أرقام التليفون -->
+            <p class="phone">
+                📞 01220021954
+                <br>
+                📞 01093050084
+            </p>
+
+        </div>
+
+
+        <!-- الأزرار -->
+        <div class="buttons">
+
+            <!-- WhatsApp -->
+            <a
+                class="button"
+                href="https://wa.me/201220021954"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                🟢 Contact us on WhatsApp
+            </a>
+
+
+            <!-- Facebook -->
+            <a
+                class="button"
+                href="https://www.facebook.com/share/1BGtB3QxYb/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                🔵 Facebook Page
+            </a>
+
+              <!-- Telegram -->
+            <a
+                class="button"
+                href="https://t.me/+2012200221954"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ✈️ Contact us on Telegram
+            </a>
+
+            <!-- Google Maps -->
+            <a
+                class="button"
+                href="https://maps.app.goo.gl/BSb8oZUEDDLpFEnR6?g_st=ac"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                📍 Our Location
+            </a>
+
+
+        </div>
+
+
+        <!-- Footer -->
+        <div class="footer">
+            Cinderella Fashion Design
+        </div>
+
+    </div>
+
+</body>
+
+</html>
